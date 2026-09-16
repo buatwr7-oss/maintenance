@@ -159,6 +159,7 @@
             padding: 12px 24px;
             font-family: 'Press Start 2P', monospace;
             font-size: 9px;
+            text-decoration: none;
             border: 3px solid #fff;
             box-shadow: 4px 4px 0px #000;
             cursor: pointer;
@@ -238,7 +239,7 @@
 
         <!-- Tombol Aksi Tunggal -->
         <div class="button-group">
-            <button type="button" onclick="handleBack()" class="btn-retro btn-back">⬅️ KEMBALI</button>
+            <a href="javascript:history.back();" class="btn-retro btn-back">⬅️ KEMBALI</a>
         </div>
 
         <div class="footer-text">
@@ -273,7 +274,7 @@
             particleContainer.appendChild(particle);
         }
 
-        // 2. Rotasi 10 Pesan Motivasi & Fakta Ilmu Pengetahuan (Durasi: 12 Detik)
+        // 2. Rotasi 10 Pesan Motivasi & Fakta Ilmu Pengetahuan (Durasi: 30 Detik)
         const npcQuotes = [
             "Selamat datang kembali, Petualang Muda! Guru-gurumu di sekolah sangat bangga dan selalu rindu melihat semangat belajarmu hari ini.",
             "Fakta Sains: Cahaya matahari membutuhkan waktu sekitar 8 menit 20 detik untuk sampai ke bumi dan memberi energi pada kehidupan.",
@@ -298,18 +299,6 @@
                 textElement.style.opacity = 1;
             }, 500);
         }, 30000);
-
-        // 3. Logika Navigasi Tombol Kembali
-        function handleBack() {
-            if (document.referrer && document.referrer !== window.location.href) {
-                window.history.back();
-            } else {
-                window.close();
-                setTimeout(() => {
-                    window.location.href = 'index.html'; // Mengarahkan ke halaman awal jika tab tidak bisa ditutup
-                }, 300);
-            }
-        }
     </script>
 </body>
 </html>
