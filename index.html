@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Maintenance - RPG Realm</title>
+    <title>Server Maintenance - Wili's</title>
     <!-- Import Font Pixel dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
@@ -178,14 +178,16 @@
     <div class="container">
         <div class="pixel-icon">🛡️⚔️</div>
 
-        <h1>AREA TERKUNCI: MAINTENANCE STAGE</h1>
+        <h1>AREA TERKUNCI (MAINTENANCE)</h1>    
+        <h1>Silahkan kembali beberapa saat lagi</h1>
+        
 
         <!-- Kotak Dialog Pembimbing Guild -->
         <div class="dialogue-box" id="dialogue-box">
-            <p><strong>[Hai Para Petualang]:</strong></p>
-            <p id="npc-text">Selamat datang kembali, Petualang Muda! Guru-gurumu di sekolah sangat bangga dan selalu rindu melihat semangat belajarmu hari ini.</p>
+            <p><strong>[Hai Para Petualang!]:</strong></p>
+            <p id="npc-text">Selamat datang kembali, Guru-gurumu di sekolah sangat bangga dan selalu rindu melihat semangat belajarmu hari ini.</p>
             <br>
-            <p>> Estimasi Selesai: <span>Segera Hadir</span></p>
+            <p>> Estimasi Selesai: <span>Segera</span></p>
             <p>> Status: <span id="status-text">Pembaruan Sistem & Arsip Pengetahuan</span></p>
         </div>
 
@@ -235,7 +237,7 @@
         const npcQuotes = [
             "Selamat datang kembali, Petualang Muda! Guru-gurumu di sekolah sangat bangga dan selalu rindu melihat semangat belajarmu hari ini.",
             "Fakta Sains: Cahaya matahari membutuhkan waktu sekitar 8 menit 20 detik untuk sampai ke bumi dan memberi energi pada kehidupan.",
-            "Setiap latihan soal yang kamu kerjakan adalah peningkatan EXP nyata untuk mempertajam kecerdasan otaknya Petualang Muda!",
+            "Setiap latihan soal yang kamu kerjakan adalah peningkatan pengalaman yang nyata untuk mempertajam kecerdasan otaknya Petualang Muda!",
             "Bapak dan Ibu Guru selalu tulus mendoakan keberhasilanmu. Jadilah Petualang Muda yang bangga dengan setiap tahapan proses belajarnya!",
             "Fakta Matematika: Angka nol (0) ditemukan pertama kali oleh matematikawan hebat asal India bernama Aryabhata.",
             "Kegigihanmu belajar hari ini adalah senjata terbaik untuk menaklukkan tantangan terbesar di masa depan. Teruslah melangkah!",
@@ -255,7 +257,7 @@
                 textElement.textContent = npcQuotes[quoteIndex];
                 textElement.style.opacity = 1;
             }, 500);
-        }, 30000);
+        }, 20000);
     </script>
 </body>
 </html>
