@@ -109,7 +109,12 @@
             font-size: 9.5px;
             line-height: 2.2;
             color: #a0aec0;
-            min-height: 130px;
+            min-height: 140px;
+        }
+
+        #npc-text {
+            transition: opacity 0.5s ease;
+            opacity: 1;
         }
 
         .dialogue-box span {
@@ -140,7 +145,6 @@
             background: linear-gradient(90deg, #00aa00, #00ff55);
             height: 100%;
             width: 78%;
-            image-rendering: pixelated;
         }
 
         /* Tombol Container & Efek Interaktif */
@@ -229,12 +233,12 @@
 
         <h1>AREA TERKUNCI: MAINTENANCE STAGE</h1>
 
-        <!-- Kotak Dialog dengan Pesan Motivasi, Kasih Sayang Guru, & Fakta Pelajaran -->
+        <!-- Kotak Dialog dengan Pesan Pembimbing Guild -->
         <div class="dialogue-box" id="dialogue-box">
-            <p><strong>[SYSTEM NPC]:</strong></p>
-            <p id="npc-text">Halo, Petualang! Guru-gurumu di sekolah sangat menyayangi kalian dan selalu rindu melihat semangat belajar kalian setiap harinya.</p>
+            <p><strong>[PEMBIMBING GUILD]:</strong></p>
+            <p id="npc-text">Selamat datang kembali, Petualang Muda! Guru-gurumu di sekolah sangat bangga dan merindukan semangat belajarmu hari ini.</p>
             <br>
-            <p>> Estimasi Selesai: <span>Segera / Segera Hadir</span></p>
+            <p>> Estimasi Selesai: <span>Segera Hadir</span></p>
             <p>> Status: <span id="status-text">Pembaruan Sistem & Arsip Pengetahuan</span></p>
         </div>
 
@@ -251,7 +255,7 @@
         <!-- Tombol Aksi -->
         <div class="button-group">
             <a href="javascript:history.back();" class="btn-retro btn-back">⬅️ KEMBALI</a>
-            
+            <a href="javascript:location.reload();" class="btn-retro btn-refresh">🔄 SEGARKAN</a>
         </div>
 
         <div class="footer-text">
@@ -260,7 +264,7 @@
     </div>
 
     <script>
-        // 1. Optimasi Partikel Berterbangan
+        // 1. Partikel Berterbangan
         const particleContainer = document.getElementById('particles-container');
         const particleCount = window.innerWidth < 480 ? 20 : 35;
         const colors = ['#ffcc00', '#00ffcc', '#ff77ff', '#ffffff', '#ff4444'];
@@ -286,28 +290,32 @@
             particleContainer.appendChild(particle);
         }
 
-        // 2. Rotasi Pesan Motivasi, Kasih Sayang Guru, & Fakta Pelajaran
+        // 2. Rotasi 10 Pesan Motivasi & Fakta Ilmu Pengetahuan (Durasi: 12 Detik)
         const npcQuotes = [
-            "Halo, Petualang! Guru-gurumu di sekolah sangat menyayangi kalian dan selalu rindu melihat semangat belajar kalian setiap hari.",
-            "Fakta Sains: Cahaya matahari membutuhkan waktu sekitar 8 menit 20 detik untuk sampai ke bumi.",
-            "Ingatlah, setiap kesalahan saat mengerjakan soal latihan adalah bukti nyata bahwa otakmu sedang berkembang dan belajar.",
-            "Bapak dan Ibu Guru selalu tulus mendoakan kesuksesan masa depan kalian. Jadilah murid yang bangga dengan proses belajarnya!",
+            "Selamat datang kembali, Petualang Muda! Guru-gurumu di sekolah sangat bangga dan selalu rindu melihat semangat belajarmu setiap hari.",
+            "Fakta Sains: Cahaya matahari membutuhkan waktu sekitar 8 menit 20 detik untuk sampai ke bumi dan memberi energi pada kehidupan.",
+            "Setiap latihan soal yang kamu kerjakan adalah peningkatan EXP nyata untuk mempertajam kecerdasan otaknya Petualang Muda!",
+            "Bapak dan Ibu Guru selalu tulus mendoakan keberhasilanmu. Jadilah Petualang Muda yang bangga dengan setiap tahapan proses belajarnya!",
             "Fakta Matematika: Angka nol (0) ditemukan pertama kali oleh matematikawan hebat asal India bernama Aryabhata.",
-            "Kegigihan kalian hari ini dalam belajar adalah kunci utama untuk menaklukkan tantangan terbesar di masa depan. Teruslah berjuang!"
+            "Kegigihanmu belajar hari ini adalah senjata terbaik untuk menaklukkan tantangan terbesar di masa depan. Teruslah melangkah!",
+            "Fakta Bahasa: Bahasa Indonesia memiliki ribuan kata serapan unik yang berasal dari berbagai bahasa di dunia.",
+            "Jangan pernah takut salah saat menjawab soal. Di dalam dunia pendidikan, kegagalan hanyalah proses mengumpulkan poin pengalaman!",
+            "Fakta Geografi: Indonesia adalah negara kepulauan terbesar di dunia dengan lebih dari 17.000 pulau yang terbentang indah.",
+            "Istirahatlah sejenak untuk memulihkan energi (Mana), lalu bersiaplah kembali untuk menuntut ilmu bersama teman-temanmu!"
         ];
 
         let quoteIndex = 0;
         const textElement = document.getElementById('npc-text');
-        textElement.style.transition = 'opacity 0.3s ease';
 
+        // Mengubah teks setiap 12.000 ms (12 Detik)
         setInterval(() => {
             quoteIndex = (quoteIndex + 1) % npcQuotes.length;
             textElement.style.opacity = 0;
             setTimeout(() => {
                 textElement.textContent = npcQuotes[quoteIndex];
                 textElement.style.opacity = 1;
-            }, 300);
-        }, 7000);
+            }, 500);
+        }, 12000);
     </script>
 </body>
 </html>
