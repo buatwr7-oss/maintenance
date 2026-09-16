@@ -150,18 +150,15 @@
         /* Tombol Container & Efek Interaktif */
         .button-group {
             display: flex;
-            gap: 15px;
             justify-content: center;
-            flex-wrap: wrap;
             margin-top: 10px;
         }
 
         .btn-retro {
             display: inline-block;
-            padding: 12px 20px;
+            padding: 12px 24px;
             font-family: 'Press Start 2P', monospace;
             font-size: 9px;
-            text-decoration: none;
             border: 3px solid #fff;
             box-shadow: 4px 4px 0px #000;
             cursor: pointer;
@@ -174,16 +171,6 @@
         }
         .btn-back:hover {
             background: #7777ff;
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px #000;
-        }
-
-        .btn-refresh {
-            background: #ff9900;
-            color: #fff;
-        }
-        .btn-refresh:hover {
-            background: #ffaa22;
             transform: translate(-2px, -2px);
             box-shadow: 6px 6px 0px #000;
         }
@@ -217,9 +204,6 @@
                 font-size: 8px;
                 padding: 10px 14px;
             }
-            .button-group {
-                gap: 10px;
-            }
         }
     </style>
 </head>
@@ -233,10 +217,10 @@
 
         <h1>AREA TERKUNCI: MAINTENANCE STAGE</h1>
 
-        <!-- Kotak Dialog dengan Pesan Pembimbing Guild -->
+        <!-- Kotak Dialog Pembimbing Guild -->
         <div class="dialogue-box" id="dialogue-box">
-            <p><strong>[PEMBIMBING GUILD]:</strong></p>
-            <p id="npc-text">Selamat datang kembali, Petualang Muda! Guru-gurumu di sekolah sangat bangga dan merindukan semangat belajarmu hari ini.</p>
+            <p><strong>[Hai Para Petualang]:</strong></p>
+            <p id="npc-text">Selamat datang kembali, Petualang Muda! Guru-gurumu di sekolah sangat bangga dan selalu rindu melihat semangat belajarmu hari ini.</p>
             <br>
             <p>> Estimasi Selesai: <span>Segera Hadir</span></p>
             <p>> Status: <span id="status-text">Pembaruan Sistem & Arsip Pengetahuan</span></p>
@@ -252,14 +236,13 @@
             </div>
         </div>
 
-        <!-- Tombol Aksi -->
+        <!-- Tombol Aksi Tunggal -->
         <div class="button-group">
-            <a href="javascript:history.back();" class="btn-retro btn-back">⬅️ KEMBALI</a>
-            <a href="javascript:location.reload();" class="btn-retro btn-refresh">🔄 SEGARKAN</a>
+            <button type="button" onclick="handleBack()" class="btn-retro btn-back">⬅️ KEMBALI</button>
         </div>
 
         <div class="footer-text">
-            &copy; 2026 RPG Realm Engine. All rights reserved.
+            &copy; 2026 Wili's Engine. All rights reserved.
         </div>
     </div>
 
@@ -292,7 +275,7 @@
 
         // 2. Rotasi 10 Pesan Motivasi & Fakta Ilmu Pengetahuan (Durasi: 12 Detik)
         const npcQuotes = [
-            "Selamat datang kembali, Petualang Muda! Guru-gurumu di sekolah sangat bangga dan selalu rindu melihat semangat belajarmu setiap hari.",
+            "Selamat datang kembali, Petualang Muda! Guru-gurumu di sekolah sangat bangga dan selalu rindu melihat semangat belajarmu hari ini.",
             "Fakta Sains: Cahaya matahari membutuhkan waktu sekitar 8 menit 20 detik untuk sampai ke bumi dan memberi energi pada kehidupan.",
             "Setiap latihan soal yang kamu kerjakan adalah peningkatan EXP nyata untuk mempertajam kecerdasan otaknya Petualang Muda!",
             "Bapak dan Ibu Guru selalu tulus mendoakan keberhasilanmu. Jadilah Petualang Muda yang bangga dengan setiap tahapan proses belajarnya!",
@@ -301,13 +284,12 @@
             "Fakta Bahasa: Bahasa Indonesia memiliki ribuan kata serapan unik yang berasal dari berbagai bahasa di dunia.",
             "Jangan pernah takut salah saat menjawab soal. Di dalam dunia pendidikan, kegagalan hanyalah proses mengumpulkan poin pengalaman!",
             "Fakta Geografi: Indonesia adalah negara kepulauan terbesar di dunia dengan lebih dari 17.000 pulau yang terbentang indah.",
-            "Istirahatlah sejenak untuk memulihkan energi (Mana), lalu bersiaplah kembali untuk menuntut ilmu bersama teman-temanmu!"
+            "Istirahatlah sejenak untuk memulihkan energi, lalu bersiaplah kembali untuk menuntut ilmu bersama teman-temanmu!"
         ];
 
         let quoteIndex = 0;
         const textElement = document.getElementById('npc-text');
 
-        // Mengubah teks setiap 12.000 ms (12 Detik)
         setInterval(() => {
             quoteIndex = (quoteIndex + 1) % npcQuotes.length;
             textElement.style.opacity = 0;
@@ -315,7 +297,19 @@
                 textElement.textContent = npcQuotes[quoteIndex];
                 textElement.style.opacity = 1;
             }, 500);
-        }, 12000);
+        }, 30000);
+
+        // 3. Logika Navigasi Tombol Kembali
+        function handleBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                window.close();
+                setTimeout(() => {
+                    window.location.href = 'index.html'; // Mengarahkan ke halaman awal jika tab tidak bisa ditutup
+                }, 300);
+            }
+        }
     </script>
 </body>
 </html>
